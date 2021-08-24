@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block style %}
+<style>
+   body{
+        background-color: #141526;
+    }
+    p{
+        color: skyblue;
+    }
+    /* li{
+        color: #6c757d!important
+    } */
+    legend{
+        color: skyblue;
+    }
+    label{
+        color: white;
+    }
+    label span{
+        color: red;
+    }
+    li{
+        color: white;
+    }
+    small{
+        color: white!important;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="content-section">
+                <form class="report_items px-4" method="POST">{% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4"> <center>Register to File Report</center></legend>
+                        {{ u_form|crispy }}
+                        {{ p_form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Register</button>
+                    </div>
+                    <div class="border-top pt-3 ">
+                        <small>
+                            Already registered?<a href="{% url 'login' %}" class="ml-2">Login</a>.
+                        </small>
+                    </div>     
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

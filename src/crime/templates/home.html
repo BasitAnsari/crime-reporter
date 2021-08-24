@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<style>
+    
+  .aside{
+        padding: 2%;
+        margin: 0px;
+        background: rgba( 0, 0, 0, 0.15 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+        backdrop-filter: blur( 4px );
+        -webkit-backdrop-filter: blur( 4px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+        border-radius: 25px;
+  }
+  .main_box{  
+        padding: 1% 5%;
+      /* background-color: red; */
+        margin: 1% 4%;
+      /* border: 3px solid white; */
+        background: rgba( 0, 0, 0, 0.15 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+        backdrop-filter: blur( 4px );
+        -webkit-backdrop-filter: blur( 4px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+        border-radius: 25px;
+       }
+       h3{
+           text-align: center;
+           color: White;
+           font-family: 'IBM Plex Serif', serif;
+       }
+       .aside{
+           color: white;
+           float: right;
+           margin-right: 5%;
+           margin-top: 10%;
+       }
+       .main_body{
+           margin-top: 9%;
+       }
+       td{
+        color: rgba( 255, 255, 255, 0.9 );
+        font-family: 'Overpass', sans-serif;
+       }
+
+</style>
+{% endblock style %}
+    
+
+{% block content%}
+{% include 'navbar.html' %}   
+      
+      <!-- End of navbar -->
+      <!-- start of aside -->
+      <aside class="aside d-none d-xl-block ">
+        <table>
+            <tr>
+                <td>Police Control Room</td><td>:100</td>
+            </tr>
+            <tr>
+                <td>Traffic Police</td><td>:1095</td>
+            </tr>
+            <tr>
+                <td>Women & Sr. Citizens</td><td>:1090</td>
+            </tr>
+            <tr>
+                <td>Children</td><td>:1098</td>
+            </tr>
+            <tr>
+                <td>Fire Brigade</td><td>:101</td>
+            </tr>
+            <tr>
+                <td>Ambulance</td><td>:102</td>
+            </tr>
+            <tr>
+                <td>Emergency Services</td><td>:108</td>
+            </tr>
+            <tr>
+                <td>Help for SC/ST ( Toll Free)</td><td>:18001806025</td>
+            </tr>
+        </table>
+    </aside>
+      <!-- end of aside -->
+      
+      <div class="container main_body">
+          <div class="row justify-content-center">
+              
+              <div class="col-md-3 col-6 main_item1 main_box"><a href="{% url 'crime_form' %}"><h3><i class="bi bi-card-text"><br></i> Report Civilian Crime</h3></a></div>
+              <div class="col-md-3 col-6 main_item2 main_box"><a href="{% url 'cyber_form' %}"><h3><i class="bi bi-phone"></i><br> Report Cyber Crime</h3></a></div>
+              <div class="col-md-3 col-6 main_item3 main_box"><a href="{% url 'anonymous_form' %}"><h3 style="font-size:x-large;"> <i class="bi bi-question-circle"></i><br> Give Anonymous Tip</h3></a></div>
+              
+            </div>
+          <div class="row justify-content-center">
+            <div class="col-md-1 col-6"></div>
+            <div class="col-md-3 col-6 main_item2 main_box"><a href="{% url 'user_view' %}"><h3><i class="bi bi-person-circle"></i><br> Citizen Portal </h3></a></div>
+            <div class="col-md-3 col-6 main_item3 main_box"><a href="{% url 'staff_view' %}"><h3><i class="fas fa-shield-alt"></i><br> Police Portal</h3></a></div>
+            <div class="col-md-4 col-6"></div>
+        </div>
+      </div>
+      {% endblock content%}

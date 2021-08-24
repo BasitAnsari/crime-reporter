@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block style %}
+    <style>
+        input {
+        border: 1px solid #c4c4c4;
+        border-radius: 5px;
+        color: grey;
+        background-color: #fff;
+        padding: 3px 5px;
+        box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+{% include 'navbar.html' %}
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bokeh/1.0.1/bokeh.min.css" integrity="sha512-G2GtPDaV7GXw4llwwjmpLfBSFnqYKHCa+GXnkIDaumjxNAetb41d3bxc/dI4uvmnsUX9jjZUkHftPFv5PXxQkA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bokeh/1.0.1/bokeh-widgets.min.css" integrity="sha512-U7nQ8QXuWRUUkhwyrqk+ianJ/Oq0r9oCknQGSD+nUHNTvGv0oaP3u4QfZmB+PI1EMSn0ZrX+2McJPi4v5IfIoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.2.min.js"></script>
+{{ script | safe }}
+
+<div class="container">
+    <aside>
+
+    </aside>
+    <div class="row">
+        <div class="col-8">
+            <form action="" class="my-4" method="post">{% csrf_token %}
+               <input type="date" name="date_from">
+               <input type="date" name="date_to">
+               <button type="submit" class="btn btn-light p-1">Get Chart.</button>
+            </form>
+        </div>
+        <div class="col-8">
+            {{ div | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

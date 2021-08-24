@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block style %}
+<style>
+   body{
+        background-color: #141526;
+    }
+    p{
+        color: white;
+    }
+    /* li{
+        color: #6c757d!important
+    } */
+    legend{
+        color: white;
+    }
+    label{
+        color: white;
+    }
+    label span{
+        color: red;
+    }
+    a{
+        color: white!important;
+    }
+    small{
+        color: white;
+    }
+    .container{
+        margin-top: 10%;
+    }
+    
+</style>
+{% endblock style %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="content-section">
+                <form class="report_items p-3" method="POST">{% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4"> <center>Login to File Report</center></legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-info" type="submit">Login</button>
+                        <small class="text-muted ml-2">
+                            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                        </small>
+                    </div>
+                    <div class="border-top pt-3">
+                        <small>
+                            Not Registered?<a href="{% url 'register' %}" class="ml-2">Register Now</a>.
+                        </small>
+                    </div>     
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

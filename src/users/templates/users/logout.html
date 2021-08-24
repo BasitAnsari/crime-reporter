@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+    body{
+         background-color: #141526;
+     }
+     h2{
+         color: white;
+     }
+     /* li{
+         color: #6c757d!important
+     } */
+     legend{
+         color: skyblue;
+     }
+     label{
+         color: white;
+     }
+     label span{
+         color: red;
+     }
+     small{
+         color: white!important;
+     }
+     a{
+         color: white!important;
+     }
+     
+ </style>
+{% endblock style %}
+{% block content %}
+<div class="container report_items p-3">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <h2>You are now logged out.  </h2>
+            
+        </div>
+    </div>
+    <div class="border-top pt-3 row">
+        <small >
+            Already registered?  <a href="{% url 'login' %}">Login Again.</a>.
+        </small>
+    </div>
+</div>
+{% endblock %}

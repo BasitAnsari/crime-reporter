@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        p{
+            color: white;
+            margin-bottom: 1%;
+            padding-left: 1%;
+        }
+        .report_items{
+            background: rgba( 0, 0, 0, 0.15 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+        }
+        legend{
+            color: white;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, rgb(255,255,255), rgba(0,0,0,0)) 1 ;
+        }
+        .main_box{
+            
+            width: 200px;
+            /* background-color: red; */
+            margin: 1% 4% ;
+            /* border: 3px solid white; */
+            background: rgba( 0, 0, 0, 0.15 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+            border-radius: 25px;
+            
+       }
+       h3{
+           text-align: center;
+           margin-top: 10%;
+           
+           color: White;
+       }
+        h1{
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, rgb(255,255,255), rgba(0,0,0,0)) 1 ;
+       } 
+       .user{
+            color: white;
+       }
+       .count{
+            text-align: center;
+       }
+       .b_bot{
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(0,0,0,0)) 1 ;
+       }
+       a{
+           color: white;
+       }
+       body{
+        font-family: 'Overpass', sans-serif;
+       }
+       legend{
+        font-family: 'IBM Plex Serif', serif;
+        }
+        h1{
+            font-family: 'IBM Plex Serif', serif;
+        }
+
+
+    </style>
+{% endblock style %}
+    {% block content %}
+        {% include 'navbar.html' %}
+        <div class="container">
+            <div class="row report_items p-2 user my-3 ">
+                <div class="col-10">
+                    <h1>{{ user.get_username }}</h1>
+                </div>
+                <div class="col-2">
+                    <div class="row d-flex justify-content-end">Crime Reports Filed: {{queryset_count}}</div>
+                    <div class="row d-flex justify-content-end">Cyber Reports Filed: {{queryset_count2}}</div>
+                </div>
+            </div>
+            <div class="row report_items p-2">
+                <div class="col-12">
+                    <legend>Civilian Reports</legend>
+                    {% for instance in object_list %}
+                        <div class="row r-item">
+                            <div class="col-9">
+                                <p class="d-flex justify-content-start b_bot">
+                                    <a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a>
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <p class="d-flex justify-content-end">
+                                    {{instance.timestamp}}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor%}
+                </div>
+                <div class="col-12">
+                    <legend>Cyber Reports</legend>
+                    {% for instance2 in object_cyber_list %}
+                        <div class="row r-item">
+                            <div class="col-9">
+                                <p class="d-flex justify-content-start b_bot">
+                                    <a href="{{ instance2.get_absolute_url }}">{{ instance2.title }}</a>
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <p class="d-flex justify-content-end">
+                                    {{instance2.timestamp}}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor%}
+                </div>
+            </div>
+        </div>
+        
+    {% endblock content%}

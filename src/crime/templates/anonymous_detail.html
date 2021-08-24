@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        .report_items{
+            background: rgba( 0, 0, 0, 0.15 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            
+        }
+        legend{
+            color: white;
+        }
+        p{
+            color: white;
+        }
+        .one_line{
+            color: white;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, rgb(255,255,255), rgba(0,0,0,0)) 1 ;
+            padding-bottom: 1%;
+
+        }
+        img{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+{% endblock style %}
+    {% block content %}
+        {% include 'navbar.html' %}
+        <div class="container">
+            <div class="row report_items p-2">
+                <div class="col-12">
+                    <legend>Title : {{object.title}}</legend>
+                    <p class="one_line">{{object.one_line_desc}}</p>
+                    <p class="desc"> <b>Description</b> : {{object.description}}</p>
+                    <p class="date"><b>Incident Date</b> : {{object.incident_date}}</p>
+                    <p class="time"><b>Incident Time</b> : {{object.incident_time}}</p>
+                    <p class="line"><b>Address</b> : {{object.address_line}}</p>
+                    <p class="city"><b>City</b> : {{object.address_city}}</p>
+                    <p class="district"><b>District</b> : {{object.address_district}}</p>
+                    <p class="state"><b>State</b> : {{object.address_state}}</p>
+                    {% if object.evidence_img %}
+                        <figure>
+                            <a href="{{ object.evidence_img.url }}"><img class="img img-thumbnail" src="{{ object.evidence_img.url }}" alt=""></a>
+                            <figcaption><p class="d-inline"><b>Evidence Image.</b></p></figcaption>
+                          </figure>
+                    {% else%}
+                        <p><b>Evidence Image</b> : No evidence provided.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock content %}

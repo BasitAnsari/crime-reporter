@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block style %}
+<style>
+    body{
+        background-color: #141526;
+    }
+    p{
+        color: skyblue;
+    }
+    li{
+        color: white;
+    }
+    .save_button{
+        color: red;
+        background-color: skyblue;
+        border-radius: 5px;
+        
+    }
+    label{
+        color: white;
+    }
+    label span{
+        color: red;
+    }
+    select{
+        margin: 5px;
+    }
+    .glass{
+        background: rgba( 0, 0, 0, 0.15 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+        backdrop-filter: blur( 4px );
+        -webkit-backdrop-filter: blur( 4px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+        margin-bottom: 5%; 
+    }
+    .clearablefileinput{
+        color: white;
+    }
+    label{
+        font-family: 'Overpass', sans-serif;
+    }
+    input{
+        font-family: 'Overpass', sans-serif;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    
+        <div class="d-inline justify-content-center p-2">
+            <form class="glass px-5 py-3" action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {{ form|crispy}}
+                <input type="submit" value='Save' class="save_button btn btn-light">
+            </form>
+        </div>
+    
+</div>
+{% endblock %}
